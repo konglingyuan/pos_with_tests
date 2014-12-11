@@ -18,7 +18,9 @@ Item.all = function() {
 
 Item.findItems = function(barcodes) {
   var allItems = this.all();
+
   var items = [];
+  
   for(var i = 0; i < barcodes.length; i++) {
     var barcodesArray = barcodes[i].split("-");
     for(var j = 0; j < allItems.length; j++) {

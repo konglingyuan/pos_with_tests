@@ -3,10 +3,10 @@ function Inventory(cart) {
 }
 
 Inventory.prototype.toString = function() {
-
-  dateDigitToString = function (num) {
+  var dateDigitToString = function (num) {
     return num < 10 ? '0' + num : num;
   };
+  
   var currentDate = new Date(),
     year = dateDigitToString(currentDate.getFullYear()),
     month = dateDigitToString(currentDate.getMonth() + 1),
@@ -16,9 +16,9 @@ Inventory.prototype.toString = function() {
     second = dateDigitToString(currentDate.getSeconds()),
     formattedDateString = year + '年' + month + '月' + date + '日 ' + hour + ':' + minute + ':' + second;
 
-
   return '***<没钱赚商店>购物清单***\n' +
     '打印时间：' + formattedDateString + '\n' +
+    '----------------------\n' +
     this.cart.getCartItemsInventoryText() +
     '----------------------\n' +
     '挥泪赠送商品：\n' +

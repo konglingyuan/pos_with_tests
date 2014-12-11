@@ -20,7 +20,6 @@ CartItem.getCartItems = function(items,barcodes) {
    return cartItems;
 };
 
-
 CartItem.prototype.getSubtotal = function() {
   return this.item.price * this.count;
 };
@@ -28,7 +27,6 @@ CartItem.prototype.getSubtotal = function() {
 CartItem.prototype.getSave = function() {
   return this.item.price * (parseInt(this.count/3));
 };
-
 
 CartItem.prototype.toInventoryText = function() {
   return '名称：' + this.item.name +
