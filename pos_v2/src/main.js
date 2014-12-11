@@ -1,7 +1,9 @@
-function printInventory(barcodes){
-  var items = Item.findItems(barcodes);
+function printInventory(inputs) {
+  var inputsArray = Split.splitBarcodes(inputs);
 
-  var cartItems = CartItem.getCartItems(items, barcodes);
+  var items = Item.findItems(inputsArray);
+
+  var cartItems = CartItem.getCartItems(items);
 
   var cart = new Cart();
   cart.cartItems = cartItems;

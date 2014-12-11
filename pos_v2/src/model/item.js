@@ -16,19 +16,27 @@ Item.all = function() {
   ];
 };
 
-Item.findItems = function(barcodes) {
+Item.findItems = function(inputsArray) {
+
   var allItems = this.all();
 
   var items = [];
-  
-  for(var i = 0; i < barcodes.length; i++) {
-    var barcodesArray = barcodes[i].split("-");
+
+  for(var i = 0; i < inputsArray.length; i++) {
     for(var j = 0; j < allItems.length; j++) {
-      if(barcodesArray[0] === allItems[j].barcode) {
-        items.push(allItems[j]);
+      if(inputsArray[i][0] === allItems[j].barcode) {
+        items.push({ item : allItems[j], count : inputsArray[i][1]});
       }
     }
   }
-
+  //console.log(inputsArray[i][0]);
+  // for(var i = 0; i < inputs.length; i++) {
+  //   for(var j = 0; j < allItems.length; j++) {
+  //     if(inputs[i] === allItems[j].barcode) {
+  //       items.push(allItems[j]);
+  //     }
+  //   }
+  // }
+  //console.log(items);
   return items;
 };

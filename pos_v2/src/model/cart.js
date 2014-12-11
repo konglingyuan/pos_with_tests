@@ -20,7 +20,7 @@ Cart.prototype.getSaveAmount = function() {
     var save = cartItem.getSave();
     saveAmount += save;
   });
-  
+
   return saveAmount;
 };
 
