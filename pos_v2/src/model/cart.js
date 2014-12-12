@@ -34,24 +34,48 @@ Cart.prototype.getCartItemsInventoryText = function() {
   return cartItemsText;
 };
 
-Cart.prototype.getCartItemsPromotionText = function() {
-  var cartItemsText = '';
-
+Cart.getPromotionBarcode = function() {
   var promotion = _.find(loadPromotions(), function(promotion){
     return promotion;
   });
-
   var promotionsBarcode = promotion.barcodes;
+  var promotionBarcode;
+
+  _.forEach(promotionsBarcode, function(promotionBarcode) {
+    promotionBarcode = promotionBarcode;
+  });
+
+  return promotionBarcode;
+
+};
+
+
+Cart.prototype.getCartItemsPromotionText = function() {
+  var cartItemsText = '';
+
+  // var promotion = _.find(loadPromotions(), function(promotion){
+  //   return promotion;
+  // });
+  //
+  // var promotionsBarcode = promotion.barcodes;
+  //
+  // _.forEach(this.cartItems, function(cartItem) {
+  //
+  //   _.forEach(promotionsBarcode, function(promotionBarcode) {
+  //     if(cartItem.item.barcode === promotionBarcode && promotion.type === 'BUY_TWO_GET_ONE_FREE') {
+  //       cartItemsText += '名称：'+ cartItem.item.name +'，数量：'+ parseInt(cartItem.count/3) +
+  //       cartItem.item.unit + '\n' ;
+  //     }
+  //   });
+  // });
 
   _.forEach(this.cartItems, function(cartItem) {
-
-    _.forEach(promotionsBarcode, function(promotionBarcode) {
-      if(cartItem.item.barcode === promotionBarcode && promotion.type === 'BUY_TWO_GET_ONE_FREE') {
-        cartItemsText += '名称：'+ cartItem.item.name +'，数量：'+ parseInt(cartItem.count/3) +
-        cartItem.item.unit + '\n' ;
-      }
-    });
+    var promotionBarcode = this.getPromotionBarcode();
+    if(cartItem.item.barcode === promotionBarcode && promotion.type === 'BUY_TWO_GET_ONE_FREE') {
+      cartItemsText += '名称：'+ cartItem.item.name +'，数量：'+ parseInt(cartItem.count/3) +
+      cartItem.item.unit + '\n' ;
+    }
   });
-  
+
   return cartItemsText;
 };
