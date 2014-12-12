@@ -24,7 +24,7 @@ Inventory.prototype.toString = function() {
          '挥泪赠送商品：\n' +
          this.cart.getCartItemsPromotionText() +
          '----------------------\n' +
-         '总计：' + (this.cart.getTotalAmount().toFixed(2) - this.cart.getSaveAmount().toFixed(2)) + '(元)\n' +
+         '总计：' + (this.cart.getTotalAmount() - this.cart.getSaveAmount()).toFixed(2) + '(元)\n' +
          '节省：'+ this.cart.getSaveAmount().toFixed(2) +'(元)\n' +
          '**********************';
 };
