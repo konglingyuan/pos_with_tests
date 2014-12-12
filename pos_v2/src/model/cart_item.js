@@ -7,17 +7,19 @@ CartItem.getCartItems = function(items) {
   var cartItems = [];
   var count = 1;
   _.forEach(items, function(item) {
+    console.log(item.count);
     var cartItem = _.find(cartItems, function(cartItem) {
       return cartItem.item.barcode === item.item.barcode;
     });
     if (cartItem) {
-      if(item.count) {
-        cartItem.count = parseInt(item.count);
-      } else {
-        cartItem.count += count;
-      }
+      cartItem.count++;
     } else {
-      cartItems.push(new CartItem(item.item, count));
+      if(item.count) {
+        count = parseInt(item.count);
+        cartItems.push(new CartItem(item.item, count));
+      } else {
+        cartItems.push(new CartItem(item.item, 1));
+      }
     }
   });
 
@@ -43,5 +45,5 @@ CartItem.prototype.toInventoryText = function() {
 
 CartItem.prototype.toPromotionText = function() {
   return '名称：'+ this.item.name +'，数量：'+ parseInt(this.count/3) +
-          this.item.unit + '\n' ;
+         this.item.unit + '\n' ;
 };
