@@ -29,14 +29,5 @@ Item.findItems = function(inputsArray) {
       }
     }
   }
-  //console.log(inputsArray[i][0]);
-  // for(var i = 0; i < inputs.length; i++) {
-  //   for(var j = 0; j < allItems.length; j++) {
-  //     if(inputs[i] === allItems[j].barcode) {
-  //       items.push(allItems[j]);
-  //     }
-  //   }
-  // }
-  //console.log(items);
   return items;
 };

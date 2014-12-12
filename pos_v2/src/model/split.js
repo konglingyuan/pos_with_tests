@@ -9,5 +9,4 @@ Split.splitBarcodes = function(inputs) {
     inputsArray.push(inputs[i].split('-'));
   }
   return inputsArray;
-  //console.log(inputsArray[5][1]);
 };
